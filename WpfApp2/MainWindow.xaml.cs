@@ -161,10 +161,10 @@ namespace WpfApp2
     {
       try
       {
-        string query = "insert into LeagueTeam value (@Name)";
+        string query = "insert into LeagueTeam values (@Name)";
         SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
         sQLConnection.Open();
-        sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+        sqlCommand.Parameters.AddWithValue("@Name", CreateItem.Text);
         // simple way to execute simple sql queries
         sqlCommand.ExecuteScalar();
       }
@@ -175,6 +175,7 @@ namespace WpfApp2
       finally
       {
         sQLConnection.Close();
+        CreateItem.Text = "";
         ShowTeams();
       }
     }
