@@ -180,5 +180,10 @@ namespace WpfApp2
       }
     }
 
+    private void addMemberToTeam()
+    {
+
+    }
+
   }// end MainWindow
 }
