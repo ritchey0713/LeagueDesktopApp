@@ -32,7 +32,7 @@ namespace WpfApp2
 
       sQLConnection = new SqlConnection(connectionString);
       ShowTeams();
-      ShowLeagueTeamMembers();
+      //ShowLeagueTeamMembers();
     }
 
     private void ShowTeams()
@@ -71,7 +71,7 @@ namespace WpfApp2
 
       try
       {
-        string query = "select * from Member m inner join LeagueTeamMember ltm on m.Id = ltm.memberId where ltm.TeamId = @TeamId";
+        string query = "select * from Member m inner join LeagueTeamMember ltm on m.Id = ltm.memberId where ltm.LeagueTeamId = @LeagueTeamId";
 
         SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
 
@@ -81,18 +81,18 @@ namespace WpfApp2
         using (sqlDataAdapter)
         {
 
-          sqlCommand.Parameters.AddWithValue("@TeamId", ListTeams.SelectedValue);
+          sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
 
-          DataTable memberTable = new DataTable();
+          DataTable TeamMemberTable = new DataTable();
 
-          sqlDataAdapter.Fill(memberTable);
+          sqlDataAdapter.Fill(TeamMemberTable);
 
           // only displays one piece of data 
-          ListTeams.DisplayMemberPath = "Name";
+          LeagueTeamMembers.DisplayMemberPath = "Name";
 
           // data to get selected item by
-          ListTeams.SelectedValuePath = "Id";
-          ListTeams.ItemsSource = memberTable.DefaultView;
+          LeagueTeamMembers.SelectedValuePath = "Id";
+          LeagueTeamMembers.ItemsSource = TeamMemberTable.DefaultView;
         }
 
       }
@@ -105,7 +105,8 @@ namespace WpfApp2
 
     private void ListTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-      MessageBox.Show("List teams was clicked");
+      //MessageBox.Show(ListTeams.SelectedValue.ToString());
+      ShowLeagueTeamMembers();
     }
   }
 }
