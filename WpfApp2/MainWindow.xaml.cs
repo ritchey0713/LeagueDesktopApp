@@ -64,5 +64,10 @@ namespace WpfApp2
       }
 
     }
+
+    private void ListTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      MessageBox.Show("List teams was clicked");
+    }
   }
 }
