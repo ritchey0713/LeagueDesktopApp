@@ -211,7 +211,7 @@ namespace WpfApp2
         string query = "delete from Member where id = @MemberId";
         SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
         sQLConnection.Open();
-        sqlCommand.Parameters.AddWithValue("@MemberId", LeagueTeamMembers.SelectedValue);
+        sqlCommand.Parameters.AddWithValue("@MemberId", AllMembers.SelectedValue);
         // simple way to execute simple sql queries
         sqlCommand.ExecuteScalar();
       }
@@ -269,6 +269,31 @@ namespace WpfApp2
 
       }
 
+    }
+
+    private void AddNewMember(object source, RoutedEventArgs e)
+    {
+      try
+      {
+        string query = "insert into Member values (@Name, @Position, @Champ)";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@Name", CreateItem.Text);
+        sqlCommand.Parameters.AddWithValue("@Position", "N/a");
+        sqlCommand.Parameters.AddWithValue("@Champ", "N/a");
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        CreateItem.Text = "";
+        ShowAllMembers();
+      }
     }
 
   }// end MainWindow
