@@ -132,6 +132,7 @@ namespace WpfApp2
       if(ListTeams.SelectedItem != null)
       {
         ShowLeagueTeamMembers();
+        ShowSelectedTeamInTextBox();
       }
     }
 
@@ -230,8 +231,6 @@ namespace WpfApp2
     {
       try
       {
-        //string query = "delete from LeagueTeamMember values(@LeagueTeamId, @MemberId)";
-        //string query = "select * from Member m inner join LeagueTeamMember ltm on m.Id = ltm.memberId where ltm.LeagueTeamId = @LeagueTeamId";
 
         string query = "delete from LeagueTeamMember where LeagueTeamId = @leagueTeamId and MemberId = @MemberId";
 
@@ -296,9 +295,34 @@ namespace WpfApp2
       }
     }
 
-    private void ShowSelectedTeamInTextBox(object source, RoutedEventArgs e)
+    private void ShowSelectedTeamInTextBox()
     {
+      try
+      {
+        string query = "select name from LeagueTeam where id = @LeagueTeamId";
 
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+
+        // interface like data to make tables usable by c# objs
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+        using (sqlDataAdapter)
+        {
+
+          sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+
+          DataTable TeamTable = new DataTable();
+
+          sqlDataAdapter.Fill(TeamTable);
+
+          CreateItem.Text = TeamTable.Rows[0]["Name"].ToString();
+        }
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
     }
 
   }// end MainWindow
