@@ -15,7 +15,7 @@
         <Button Content="Delete Team" HorizontalAlignment="Left" Margin="40,192,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="DeleteTeam_Click"/>
         <Button Content="Remove Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Add Team" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Add Team" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="AddTeam_Click"/>
         <Button Content="Add Team Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Update Team" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Update Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
