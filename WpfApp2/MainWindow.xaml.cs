@@ -129,9 +129,36 @@ namespace WpfApp2
     private void ListTeams_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
       //MessageBox.Show(ListTeams.SelectedValue.ToString());
-      ShowLeagueTeamMembers();
+      if(ListTeams.SelectedItem != null)
+      {
+        ShowLeagueTeamMembers();
+      }
     }
 
-  
+    private void DeleteTeam_Click(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        string query = "delete from LeagueTeam where id = @LeagueTeamId";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        ShowTeams();
+      }
+
+
+
+     
+    }
   }
 }

@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="625">
+        Title="League Teams" Height="400" Width="625">
     <Grid>
         <Label Content="Team Members" HorizontalAlignment="Left" Margin="259,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.271,0.564"/>
         <ListBox Name="LeagueTeamMembers" HorizontalAlignment="Left" Height="130" Margin="231,58,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Team List" HorizontalAlignment="Left" Margin="79,26,0,0" VerticalAlignment="Top"/>
         <ListBox Name="ListTeams" HorizontalAlignment="Left" Height="130" Margin="40,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ListTeams_SelectionChanged"/>
         <ListBox Name="AllMembers" HorizontalAlignment="Left" Height="217" Margin="426,57,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Content="Delete Team" HorizontalAlignment="Left" Margin="40,192,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Delete Team" HorizontalAlignment="Left" Margin="40,192,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="DeleteTeam_Click"/>
+        <Button Content="Remove Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,30,0,0" VerticalAlignment="Top" Width="150" Height="23" RenderTransformOrigin="0.658,-0.391"/>
+        <Button Content="Add Team" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Add Team Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Update Team" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Update Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Add Member to Team" HorizontalAlignment="Left" Margin="426,30,0,0" VerticalAlignment="Top" Width="150" Height="23" RenderTransformOrigin="0.658,-0.391"/>
+        <TextBox HorizontalAlignment="Left" Height="54" Margin="40,220,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="341"/>
 
     </Grid>
 </Window>
