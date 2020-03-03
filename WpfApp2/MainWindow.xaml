@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Team Members" HorizontalAlignment="Left" Margin="280,27,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="LeagueTeamMembers" HorizontalAlignment="Left" Height="250" Margin="280,57,0,0" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Team List" HorizontalAlignment="Left" Margin="24,26,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="ListTeams" HorizontalAlignment="Left" Height="250" Margin="24,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ListTeams_SelectionChanged"/>
+        <Label Content="Team Members" HorizontalAlignment="Left" Margin="314,27,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="LeagueTeamMembers" HorizontalAlignment="Left" Height="250" Margin="314,57,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Team List" HorizontalAlignment="Left" Margin="64,26,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="ListTeams" HorizontalAlignment="Left" Height="250" Margin="64,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ListTeams_SelectionChanged"/>
+        <Label Content="All Members" HorizontalAlignment="Left" Margin="565,27,0,0" VerticalAlignment="Top"/>
+        <ListBox Name="AllMembers" HorizontalAlignment="Left" Height="250" Margin="565,57,0,0" VerticalAlignment="Top" Width="150"/>
 
     </Grid>
 </Window>

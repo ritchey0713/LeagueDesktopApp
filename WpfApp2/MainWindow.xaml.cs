@@ -32,7 +32,7 @@ namespace WpfApp2
 
       sQLConnection = new SqlConnection(connectionString);
       ShowTeams();
-      //ShowLeagueTeamMembers();
+      ShowAllMembers();
     }
 
     private void ShowTeams()
@@ -64,6 +64,29 @@ namespace WpfApp2
         MessageBox.Show(e.ToString());
       }
 
+    }
+
+    private void ShowAllMembers()
+    {
+      try
+      {
+        string query = "select * from Member";
+
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sQLConnection);
+
+        using (sqlDataAdapter)
+        {
+          DataTable MembersTable = new DataTable();
+          sqlDataAdapter.Fill(MembersTable);
+
+          AllMembers.DisplayMemberPath = "Name";
+          AllMembers.SelectedValuePath = "Id";
+          AllMembers.ItemsSource = MembersTable.DefaultView;
+        }
+      } catch(Exception e)
+      {
+        MessageBox.Show(e.ToString());
+      }
     }
 
     private void ShowLeagueTeamMembers()
@@ -108,5 +131,7 @@ namespace WpfApp2
       //MessageBox.Show(ListTeams.SelectedValue.ToString());
       ShowLeagueTeamMembers();
     }
+
+  
   }
 }
