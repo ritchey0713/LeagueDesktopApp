@@ -180,9 +180,28 @@ namespace WpfApp2
       }
     }
 
-    private void addMemberToTeam()
+    private void addMemberToTeam(object sender, RoutedEventArgs e)
     {
-
+      try
+      {
+        // order of values does matter
+        string query = "insert into LeagueTeamMember values (@LeagueTeamId, @MemberId)";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+        sqlCommand.Parameters.AddWithValue("@MemberId", AllMembers.SelectedValue);
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        ShowLeagueTeamMembers();
+      }
     }
 
   }// end MainWindow
