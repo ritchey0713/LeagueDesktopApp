@@ -359,8 +359,6 @@ namespace WpfApp2
     {
       if (AllMembers.SelectedItem != null)
       {
-        //ShowLeagueTeamMembers();
-        //ShowSelectedTeamInTextBox();
         ShowSelectedMemberInTextBox();
       }
     }
