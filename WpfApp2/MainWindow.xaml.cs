@@ -155,10 +155,29 @@ namespace WpfApp2
         sQLConnection.Close();
         ShowTeams();
       }
-
-
-
-     
     }
-  }
+
+    private void AddTeam_Click(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        string query = "insert into LeagueTeam value (@Name)";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        ShowTeams();
+      }
+    }
+
+  }// end MainWindow
 }
