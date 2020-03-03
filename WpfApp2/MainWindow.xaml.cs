@@ -362,5 +362,30 @@ namespace WpfApp2
         ShowSelectedMemberInTextBox();
       }
     }
+
+    private void UpdateTeamName(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        // order of values does matter
+        string query = "update LeagueTeam Set Name = @Name where Id = @LeagueTeamId";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+        sqlCommand.Parameters.AddWithValue("@Name", CreateItem.Text);
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        CreateItem.Text = "";
+        ShowTeams();
+      }
+    }
   }// end MainWindow
 }
