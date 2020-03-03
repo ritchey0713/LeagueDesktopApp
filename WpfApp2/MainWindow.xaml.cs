@@ -32,6 +32,7 @@ namespace WpfApp2
 
       sQLConnection = new SqlConnection(connectionString);
       ShowTeams();
+      ShowLeagueTeamMembers();
     }
 
     private void ShowTeams()
@@ -59,6 +60,43 @@ namespace WpfApp2
         }
 
       } catch (Exception e)
+      {
+        MessageBox.Show(e.ToString());
+      }
+
+    }
+
+    private void ShowLeagueTeamMembers()
+    {
+
+      try
+      {
+        string query = "select * from Member m inner join LeagueTeamMember ltm on m.Id = ltm.memberId where ltm.TeamId = @TeamId";
+
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+
+        // interface like data to make tables usable by c# objs
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+        using (sqlDataAdapter)
+        {
+
+          sqlCommand.Parameters.AddWithValue("@TeamId", ListTeams.SelectedValue);
+
+          DataTable memberTable = new DataTable();
+
+          sqlDataAdapter.Fill(memberTable);
+
+          // only displays one piece of data 
+          ListTeams.DisplayMemberPath = "Name";
+
+          // data to get selected item by
+          ListTeams.SelectedValuePath = "Id";
+          ListTeams.ItemsSource = memberTable.DefaultView;
+        }
+
+      }
+      catch (Exception e)
       {
         MessageBox.Show(e.ToString());
       }
