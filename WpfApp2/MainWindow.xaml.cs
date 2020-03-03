@@ -296,5 +296,10 @@ namespace WpfApp2
       }
     }
 
+    private void ShowSelectedTeamInTextBox(object source, RoutedEventArgs e)
+    {
+
+    }
+
   }// end MainWindow
 }
