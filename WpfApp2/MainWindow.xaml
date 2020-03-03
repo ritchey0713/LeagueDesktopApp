@@ -11,7 +11,7 @@
         <ListBox Name="LeagueTeamMembers" HorizontalAlignment="Left" Height="130" Margin="231,58,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Team List" HorizontalAlignment="Left" Margin="79,26,0,0" VerticalAlignment="Top"/>
         <ListBox Name="ListTeams" HorizontalAlignment="Left" Height="130" Margin="40,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ListTeams_SelectionChanged"/>
-        <ListBox Name="AllMembers" HorizontalAlignment="Left" Height="217" Margin="426,57,0,0" VerticalAlignment="Top" Width="150"/>
+        <ListBox Name="AllMembers" HorizontalAlignment="Left" Height="217" Margin="426,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="AllMembers_SelectionChanged"/>
         <Button Content="Delete Team" HorizontalAlignment="Left" Margin="40,192,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="DeleteTeam_Click"/>
         <Button Content="Remove Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="RemoveMemberFromTeam"/>
         <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="RemoveMember"/>

@@ -325,5 +325,44 @@ namespace WpfApp2
       }
     }
 
+    private void ShowSelectedMemberInTextBox()
+    {
+      try
+      {
+        string query = "select name from Member where id = @MemberId";
+
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+
+        // interface like data to make tables usable by c# objs
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+        using (sqlDataAdapter)
+        {
+
+          sqlCommand.Parameters.AddWithValue("@MemberId", AllMembers.SelectedValue);
+
+          DataTable MemberTable = new DataTable();
+
+          sqlDataAdapter.Fill(MemberTable);
+
+          CreateItem.Text = MemberTable.Rows[0]["Name"].ToString();
+        }
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+    }
+
+    private void AllMembers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      if (AllMembers.SelectedItem != null)
+      {
+        //ShowLeagueTeamMembers();
+        //ShowSelectedTeamInTextBox();
+        ShowSelectedMemberInTextBox();
+      }
+    }
   }// end MainWindow
 }
