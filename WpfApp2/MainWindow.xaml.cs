@@ -40,23 +40,23 @@ namespace WpfApp2
 
       try
       {
-        string query = "select * from Member";
+        string query = "select * from LeagueTeam";
       
         // interface like data to make tables usable by c# objs
         SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sQLConnection);
 
         using (sqlDataAdapter)
         {
-          DataTable memberTable = new DataTable();
+          DataTable TeamTable = new DataTable();
 
-          sqlDataAdapter.Fill(memberTable);
+          sqlDataAdapter.Fill(TeamTable);
 
           // only displays one piece of data 
           ListTeams.DisplayMemberPath = "Name";
 
           // data to get selected item by
           ListTeams.SelectedValuePath = "Id";
-          ListTeams.ItemsSource = memberTable.DefaultView;
+          ListTeams.ItemsSource = TeamTable.DefaultView;
         }
 
       } catch (Exception e)
