@@ -13,13 +13,13 @@
         <ListBox Name="ListTeams" HorizontalAlignment="Left" Height="130" Margin="40,57,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ListTeams_SelectionChanged"/>
         <ListBox Name="AllMembers" HorizontalAlignment="Left" Height="217" Margin="426,57,0,0" VerticalAlignment="Top" Width="150"/>
         <Button Content="Delete Team" HorizontalAlignment="Left" Margin="40,192,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="DeleteTeam_Click"/>
-        <Button Content="Remove Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Remove Member" HorizontalAlignment="Left" Margin="231,193,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="RemoveMemberFromTeam"/>
+        <Button Content="Delete Member" HorizontalAlignment="Left" Margin="426,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="RemoveMember"/>
         <Button Content="Add Team" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="AddTeam_Click"/>
-        <Button Content="Add Team Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Add Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Update Team" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
         <Button Content="Update Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
-        <Button Content="Add Member to Team" HorizontalAlignment="Left" Margin="426,30,0,0" VerticalAlignment="Top" Width="150" Height="23" RenderTransformOrigin="0.658,-0.391"/>
+        <Button Content="Add Member to Team" HorizontalAlignment="Left" Margin="426,30,0,0" VerticalAlignment="Top" Width="150" Height="23" RenderTransformOrigin="0.658,-0.391" Click="addMemberToTeam"/>
         <TextBox Name="CreateItem" HorizontalAlignment="Left" Height="54" Margin="40,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="341"/>
 
     </Grid>

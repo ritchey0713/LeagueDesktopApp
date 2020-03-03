@@ -204,5 +204,72 @@ namespace WpfApp2
       }
     }
 
+    private void RemoveMember(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        string query = "delete from Member where id = @MemberId";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@MemberId", LeagueTeamMembers.SelectedValue);
+        // simple way to execute simple sql queries
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        sQLConnection.Close();
+        ShowAllMembers();
+      }
+    }
+
+    private void RemoveMemberFromTeam(object sender, RoutedEventArgs e)
+    {
+      try
+      {
+        //string query = "delete from LeagueTeamMember values(@LeagueTeamId, @MemberId)";
+        //string query = "select * from Member m inner join LeagueTeamMember ltm on m.Id = ltm.memberId where ltm.LeagueTeamId = @LeagueTeamId";
+
+        string query = "delete from LeagueTeamMember where LeagueTeamId = @leagueTeamId and MemberId = @MemberId";
+
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+
+        // interface like data to make tables usable by c# objs
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+        using (sqlDataAdapter)
+        {
+
+          sqlCommand.Parameters.AddWithValue("@LeagueTeamId", ListTeams.SelectedValue);
+          sqlCommand.Parameters.AddWithValue("@MemberId", LeagueTeamMembers.SelectedValue);
+
+          DataTable TeamMemberTable = new DataTable();
+
+          sqlDataAdapter.Fill(TeamMemberTable);
+
+          // only displays one piece of data 
+          LeagueTeamMembers.DisplayMemberPath = "Name";
+
+          // data to get selected item by
+          LeagueTeamMembers.SelectedValuePath = "Id";
+          LeagueTeamMembers.ItemsSource = TeamMemberTable.DefaultView;
+        }
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        ShowLeagueTeamMembers();
+
+      }
+
+    }
+
   }// end MainWindow
 }
