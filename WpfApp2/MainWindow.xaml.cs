@@ -387,5 +387,28 @@ namespace WpfApp2
         ShowTeams();
       }
     }
+
+    private void UpdateMember(object source, RoutedEventArgs e)
+    {
+      try
+      {
+        string query = "update Member Set Name = @Name where Id = @MemberId";
+        SqlCommand sqlCommand = new SqlCommand(query, sQLConnection);
+        sQLConnection.Open();
+        sqlCommand.Parameters.AddWithValue("@MemberId", AllMembers.SelectedValue);
+        sqlCommand.Parameters.AddWithValue("@Name", CreateItem.Text);
+
+        sqlCommand.ExecuteScalar();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.ToString());
+      }
+      finally
+      {
+        CreateItem.Text = "";
+        ShowAllMembers();
+      }
+    }
   }// end MainWindow
 }

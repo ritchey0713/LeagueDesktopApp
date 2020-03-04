@@ -18,7 +18,7 @@
         <Button Content="Add Team" HorizontalAlignment="Left" Margin="40,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="AddTeam_Click"/>
         <Button Content="Add Member" HorizontalAlignment="Left" Margin="231,279,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="AddNewMember"/>
         <Button Content="Update Team" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="UpdateTeamName"/>
-        <Button Content="Update Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23"/>
+        <Button Content="Update Member" HorizontalAlignment="Left" Margin="231,307,0,0" VerticalAlignment="Top" Width="150" Height="23" Click="UpdateMember"/>
         <Button Content="Add Member to Team" HorizontalAlignment="Left" Margin="426,30,0,0" VerticalAlignment="Top" Width="150" Height="23" RenderTransformOrigin="0.658,-0.391" Click="addMemberToTeam"/>
         <TextBox Name="CreateItem" HorizontalAlignment="Left" Height="54" Margin="40,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="341"/>
 
